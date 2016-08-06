@@ -1,0 +1,39 @@
+﻿
+
+<div class="container" style="color:white; text-align:center; padding-top:100px;">
+
+
+        <h1>Let us help you find the perfect job!</h1>
+        <h2>First, you'll need to tell us a little about yourself.</h2>
+
+        <br />
+        <div ng-controller="MyCtrl">
+
+            <p class="lead">
+                <label for="file-upload" class="btn btn-lg btn-success btn-lg">
+                    <span class="fa fa-cloud-upload fa-fw"></span>  Upload Resume
+                </label>
+            </p>
+
+            <input id="file-upload" file-change="setFile" type="file" style="display:none;" />
+            <p>{{theFile.name}}</p>
+
+            <div ng-repeat="keyword in Keywords">
+                <p>{{keyword}}</p>
+            </div>
+
+        </div>
+       
+        <div ng-controller="DropboxController">
+            <p class="lead"><button ng-click="dropbox()" class="btn btn-lg btn-success btn-lg"><i class="fa fa-dropbox" aria-hidden="true"></i> From DropBox</button></p>
+        </div>
+
+        </div>
+ 
+    
+
+
+
+
+   
+

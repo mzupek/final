@@ -1,0 +1,130 @@
+﻿
+
+<div ng-controller="SearchResultController">
+
+    <div class="row">
+        <div style="text-align:center; margin-top:135px; max-width:860px; margin-left:auto; margin-right:auto;">
+            <h2 style="padding-top:5px;" class="cover-heading">Based on your resume, here's what we found</h2>
+           
+              
+                <form ng-submit="search(this)">
+                    <div class="pull-left hidden-sm hidden-xs" style="padding-right:7px; padding-top:5px;">
+                        <b>We searched for</b>
+                    </div>
+                    <div class="pull-left" style="padding-right:7px;">
+                        <input name="query" ng-model="query" type="text" class="form-control" placeholder="Search term" />
+                    </div>
+                    <div class="pull-left hidden-sm hidden-xs" style="padding-right:7px; padding-top:5px;">
+                        <b>In or near</b>
+                    </div>
+                    <div class="pull-left" style="padding-right:7px;">
+                        <input name="loc" ng-model="loc" type="text" class="form-control" placeholder="Location" />
+                    </div>
+                    <div class="pull-left hidden-sm hidden-xs" style="padding-right:7px; padding-top:5px;">
+                        <b>You can change and</b>
+                    </div>
+                    <div class="pull-left" style="text-align:center;">
+                        <button type="submit" class="btn btn-success hidden-sm hidden-xs">Search Again</button>
+                        <button type="submit" class="btn btn-success hidden-lg hidden-md">Go</button>
+                    </div>
+                </form>
+            
+        </div>
+    </div>
+    <div class="container-fluid" style="margin-top:20px; margin-bottom:0px;">
+       
+       
+
+        <div ng-controller="JobParseController">
+            <div class="panel panel-success col-lg-8 col-lg-offset-2">
+                <div class="panel-heading" style="height:auto;">
+                    <a href="#" ng-click="paste()" style="color:white;"><i class="fa fa-paste"></i> Paste In Job</a>
+                </div>
+                <div style="background-color:white; overflow-y:scroll; height:575px;">
+                    <div class="panel-body">
+                        <div style="text-align:center;" ng-show="jobs == ''"><h3>Can you help us out, our search for a job didn't return any results, add to the search above to retry.</h3></div>
+                        <div ng-repeat-start="job in jobs track by $index">
+                            
+                            <div><h4 style="text-align:left"><b>{{job.jobtitle}}</b></h4></div>
+                            {{job.company}} - {{job.formattedLocation}}
+                            <div style="text-align:left;" ng-bind-html="job.snippet">
+                                {{job.snippet}}
+                            </div>
+                            Date Posted: {{job.date}}  <br/>
+                            <div class="pull-right">
+                                <button class="btn-success" ng-click="parse(this)" data="{{job.url}}">See how you match up</button> | <button class="btn-success" ng-click="open(this)" data="{{job.url}}">View full Job</button>
+                            </div>
+                           
+
+
+                            <hr style="color:#06aa6e;" />
+                        </div>
+                        <div ng-repeat-end></div>
+                    </div>
+                </div>
+                <div style="margin:5px;">
+                    <a href="/Start"><i class="glyphicon glyphicon-chevron-left"></i> Resumes</a>
+                </div>
+                
+            </div>
+        </div>
+
+        </div>
+   
+
+    
+    <div>
+        <script type="text/ng-template" id="myModalContent.html">
+            <div class="modal-header">
+                <h3 class="modal-title" ng-bind-html="MJtitle">{{MJtitle}}</h3>
+            </div>
+            <div ng-bind-html="MJdesc" class="modal-body">
+                {{MJdesc}}
+            </div>
+            <div class="modal-footer">
+                @*<button class="btn btn-primary" ng-click="ok()">OK</button>*@
+                <button class="btn btn-warning" ng-click="cancel()">Close</button>
+            </div>
+        </script>
+
+    </div>
+
+
+    <script type="text/ng-template" id="PasteModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Paste in Job Description</h3>
+        </div>
+       
+            <div class="modal-body">
+
+                <textarea name="jd" ng-model="jd" style="width:100%; height:300px;"></textarea>
+                <button class="btn btn-default" ng-click="op(jd)">OK</button>
+            </div>
+      
+        <div class="modal-footer">
+            
+            <button class="btn btn-warning" ng-click="cancel()">Close</button>
+        </div>
+
+    </script>
+   
+
+</div> 
+
+
+   
+
+    @*<button class="btn btn-default" ng-click="open()">Open me!</button>
+        <button class="btn btn-default" ng-click="open('lg')">Large modal</button>
+        <button class="btn btn-default" ng-click="open('sm')">Small modal</button>
+        <div ng-show="selected">Selection from a modal: {{ selected }}</div>*@
+
+
+
+
+
+    @*<button class="btn btn-default" ng-click="open()">Open me!</button>
+        <button class="btn btn-default" ng-click="open('lg')">Large modal</button>
+        <button class="btn btn-default" ng-click="open('sm')">Small modal</button>
+        <div ng-show="selected">Selection from a modal: {{ selected }}</div>*@
+   

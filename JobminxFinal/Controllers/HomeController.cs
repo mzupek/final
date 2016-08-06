@@ -12,5 +12,8 @@ namespace JobminxFinal.Controllers
         {
             return View();
         }
+
     }
+
+    
 }

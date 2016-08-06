@@ -87,6 +87,14 @@ namespace JobminxFinal.Models
 
         [Display(Name = "Hometown")]
         public string Hometown { get; set; }
+
+        //Credit card info - not stored just passed through to stripe
+
+        public string Number { get; set; }
+        public string ExpirationYear { get; set; }
+        public string ExpirationMonth { get; set; }
+        public string Name { get; set; }
+        public string Cvc { get; set; }
     }
 
     public class ResetPasswordViewModel

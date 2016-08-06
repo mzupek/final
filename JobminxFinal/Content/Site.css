@@ -1,36 +1,189 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿ html { 
+  
+  position: relative;
+  min-height: 100%;   
+  background: url('../../images/People-walking-blur-low-res.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+body {
+background-color:transparent;
+color:white;
+   
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.container-fluid {
+   padding-right: 0px;
+   padding-left: 0px; 
+
+}
+.container .text-muted {
+  margin: 20px 0;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.row {
+  margin-right: 0px;
+  margin-left: 0px;
 }
 
-/* Set padding to display errors that occur during databinding */
-.padding-error {
-    padding-top: 20px;
+.col-lg-8{
+    padding-left:0;
+    padding-right:0;
 }
 
-@media only screen and (max-width: 767px) {
-    .nofloat {
-        float: none;
-        padding: 10px 15px;
-    }
+.panel-success>.panel-heading {
+  color: #ffffff;
+  background-color: #06aa6e;
+  border-color: #06aa6e;
+  height:60px;
+}
+
+.panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.container .jumbotron, .container-fluid .jumbotron {
+  border-radius: 0px;
+}
+
+code {
+  font-size: 80%;
+}
+/* Links */
+a,
+a:focus,
+a:hover {
+  color: #06aa6e;
+}
+
+
+
+/* Custom default button */
+.btn-default,
+.btn-default:focus {
+  color: #06aa6e;
+  text-shadow:none; /* Prevent inheritence from `body` */
+  background-color:transparent;
+  border: 1px solid #06aa6e;
+  border-radius:0px;
+}
+
+.btn-default:hover {
+
+    background-color:rgba(6,170,110,.5);
+    color:white;
+
+}
+
+button .btn-default:hover  {
+
+    background-color:rgba(6,170,110,.5);
+    color:white;
+
+}
+
+
+.btn-primary,
+.btn-primary:focus {
+  color: #ffffff;
+  text-shadow:none; /* Prevent inheritence from `body` */
+  background-color:transparent;
+  border: 1px solid #ffffff;
+  border-radius:0px;
+}
+
+.btn-primary:hover {
+
+    background-color:rgba(6,170,110,.5);
+    color:white;
+
+}
+
+button .btn-primary:hover  {
+
+    background-color:rgba(6,170,110,.5);
+    color:white;
+
+}
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.fade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    
+    
+    opacity: 1;
+    margin-left:auto;
+    margin-right:auto;
+}
+.fade.ng-enter,
+.fade.ng-leave {
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.fade.ng-enter {
+    opacity: 0;
+}
+.fade.ng-enter-active {
+    opacity: 1;
+}
+.fade.ng-leave {
+    opacity: 1;
+}
+.fade.ng-leave-active {
+    opacity: 0;
+}
+
+.heads {
+
+    border-radius:5px; color:white; padding:10px; margin-top:20px; margin-left:auto; margin-right:auto; max-width:700px; background-color:rgb(118,75,147);
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #06aa6e;
+  font-size:18px;
+}
+
+.match{
+
+    background-color:yellow;
+    padding:2px;
+}
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+.navbar-default {
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  border-color: #ffffff;
 }

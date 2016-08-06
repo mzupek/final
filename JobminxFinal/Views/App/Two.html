@@ -1,0 +1,132 @@
+﻿
+<div class="container-fluid" style="margin-top:125px;">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <h2 class="cover-heading" style="text-align:center;">Now, lets edit your resume so you are the best match for this position</h2>
+        </div>
+
+    </div>
+
+</div>
+
+<div ng-controller="OptimizeController" ng-init="track(this)">
+   
+    <div class="container-fluid" style="background-color: #ffffff;">
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="panel panel-success col-lg-8 col-lg-offset-2">
+                    <div class="row" style="height:60px; color:white; background-color:blueviolet;">
+                        <div class="col-lg-6">
+                            <h2 title="{{JobTitle}}" style="margin-top:10px; margin-bottom:0px; cursor:pointer;">{{JobTitle | limitTo: 18 }}{{JobTitle.length > 18 ? '...' : ''}}</h2>
+                        </div>
+                        <div class="col-lg-3">
+                            <p style="margin-top:10px;">Location<br /><b>{{Location}}</b></p>
+                           
+                        </div>
+                        <div class="col-lg-3">
+                            <p style="margin-top:10px;">Company<br /><b>{{Company | limitTo:22}}{{Company.length > 22 ? '...' : ''}}</b></p>
+                           
+                        </div>
+
+
+                    </div>
+                    <div class="panel-body">
+                        
+                            <div class="col-lg-3">
+                               
+                                <a href="#" ng-click="viewjob(this)"><i class="glyphicon glyphicon-new-window"></i> View Selected Job</a>
+
+                                <h4><i class="fa fa-smile-o" style="color:green;"></i> Matching Job Skills</h4>
+                                <p><u>Be sure to keep these keywords.</u></p>
+                                <div style="height:215px; overflow-y:scroll; text-align:left; border-color:black; border-width:1px; border-style:solid;">
+
+                                    <p ng-repeat="item in Keep">{{item}}</p>
+
+                                </div>
+                                <h4><i class="fa fa-frown-o" style="color:red;"></i> Missing Job Skills</h4>
+                                <p><u>Try to add these keywords</u></p>
+                                <div style="height:215px; overflow-y:scroll; text-align:left; border-color:black; border-width:1px; border-style:solid;">
+
+                                    <p ng-repeat="item in Missing">{{item}}</p>
+
+                                </div>
+                                <div style="margin:10px;">
+                                    <a href="/One"><i class="glyphicon glyphicon-chevron-left"></i> Job Search</a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-9">
+                              
+                                <div class="col-lg-3">
+                                    <h5 style="margin-top:0;margin-left:10px;;margin-right:0; margin-bottom:0;">Match</h5> 
+                                    <div class="pull-left" style="margin-top:-30px;">
+                                        
+                                        <h5 style="position:relative; top:48px; left:16px;">
+                                            {{Score}}%
+                                        </h5>
+                                        <progress-arc size="60"
+                                                      stroke="#764b93"
+                                                      stroke-width="4"
+                                                      complete="Score/100"
+                                                      counter-clockwise="false"
+                                                      background="#F1F1F1">
+
+                                        </progress-arc>
+                                        <input type="hidden" ng-model="Score" value="{{Score}}">
+                                        
+                                     </div>
+                                   
+                                </div>
+                                <div class="col-lg-9" style="text-align:center;">
+                                    <h4>Edit your resume in the box below</h4>
+                                    <p>Use the keywords skills to the left and re-score to see if you have increased your job match</p>
+                                </div>
+                               
+                                <div style="height:500px; width:100%; overflow-y:scroll; border-style: solid; border-width:1px; border-color:#06aa6e;" contenteditable="true" ng-model="resumeText" tabindex="0">
+                                    {{resumeText}}
+                                </div>
+                                <div>
+                                    
+                                  
+                                    <div class="col-lg-12">
+                                       
+                                        <a href="#" style="margin:5px;" ng-click="track(this)" class="btn btn-default pull-right"><span class="glyphicon glyphicon-retweet"></span> Re-Score</a>
+                                        <a href="{{currentJobUrl}}" style="margin:5px;" target="_blank" class="btn btn-default pull-right"><span class="fa fa-send-o"></span> Apply</a>
+                                        <form action="/App/ResumeDocx" method="post" target="_blank">
+                                            <input type="hidden" value="{{resumeText}}" name="resume" />
+                                            <button style="margin:5px;" type="submit" class="btn btn-default pull-right"><span class="glyphicon glyphicon-thumbs-up"></span> Download Resume</button>
+                                        </form>
+                                        <h4 class="pull-right" style="margin-top:15px; margin-right:5px;">Done editing?</h4>
+                                    </div>
+                                   
+                                    
+                                </div>
+                            </div>
+
+                      
+
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+  
+    <div>
+        <script type="text/ng-template" id="jobModalContent.html">
+            <div class="modal-header">
+                <h3 class="modal-title" ng-bind-html="CJtitle" >{{CJtitle}}</h3>
+            </div>
+            <div class="modal-body" ng-bind-html="CJdesc">
+                {{CJdesc}}
+            </div>
+            <div class="modal-footer">
+                @*<button class="btn btn-primary" ng-click="ok()">OK</button>*@
+                <button class="btn btn-warning" ng-click="cancel()">Close</button>
+            </div>
+        </script>
+
+    </div>
+    </div>

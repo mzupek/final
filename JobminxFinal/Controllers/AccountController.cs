@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using JobminxFinal.Models;
+using Stripe;
 
 namespace JobminxFinal.Controllers
 {
@@ -163,6 +164,78 @@ namespace JobminxFinal.Controllers
         {
             if (ModelState.IsValid)
             {
+
+
+                var planService = new StripePlanService("sk_live_PrZPD9yrQ7INvLkw6stlykLN");
+
+                var myCustomer = new StripeCustomerCreateOptions();
+                myCustomer.Email = "pork@email.com";
+                myCustomer.Description = "Johnny Tenderloin (pork@email.com)";
+
+                // setting up the card
+                myCustomer.SourceCard = new SourceCard()
+                {
+                    Number = model.Number,
+                    ExpirationYear = model.ExpirationYear,
+                    ExpirationMonth = model.ExpirationYear,
+                    //AddressCountry = "US",                // optional
+                    //AddressLine1 = "24 Beef Flank St",    // optional
+                    //AddressLine2 = "Apt 24",              // optional
+                    //AddressCity = "Biggie Smalls",        // optional
+                    //AddressState = "NC",                  // optional
+                    //AddressZip = "27617",                 // optional
+                    Name = model.Name,               // optional
+                    Cvc = model.Cvc                          // optional
+                };
+
+                
+
+
+
+                var customerService = new StripeCustomerService();
+                StripeCustomer stripeCustomer = customerService.Create(myCustomer);
+
+                // setting up the card
+                var myCharge = new StripeChargeCreateOptions();
+
+
+                myCharge.SourceCard = new SourceCard()
+                {
+                    Number = model.Number,
+                    ExpirationYear = model.ExpirationYear,
+                    ExpirationMonth = model.ExpirationYear,
+                    //AddressCountry = "US",                // optional
+                    //AddressLine1 = "24 Beef Flank St",    // optional
+                    //AddressLine2 = "Apt 24",              // optional
+                    //AddressCity = "Biggie Smalls",        // optional
+                    //AddressState = "NC",                  // optional
+                    //AddressZip = "27617",                 // optional
+                    Name = model.Name,               // optional
+                    Cvc = model.Cvc                          // optional
+                };
+
+                // always set these properties
+                myCharge.Amount = 1000;
+                myCharge.Currency = "usd";
+
+                // set this if you want to
+                myCharge.Description = "All you can use for 10.00";
+
+               
+
+                // set this property if using a customer
+                myCharge.CustomerId = stripeCustomer.Id;
+
+                // set this if you have your own application fees (you must have your application configured first within Stripe)
+                //myCharge.ApplicationFee = 25;
+
+                // (not required) set this to false if you don't want to capture the charge yet - requires you call capture later
+                myCharge.Capture = true;
+
+                var chargeService = new StripeChargeService();
+                StripeCharge stripeCharge = chargeService.Create(myCharge);
+
+
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Hometown = model.Hometown };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -399,8 +472,7 @@ namespace JobminxFinal.Controllers
 
         //
         // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
