@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Jobminx</title>
     <!-- Core CSS - Include with every page -->
-    https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
+   
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="~/assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
     <link href="~/assets/css/style.css" rel="stylesheet" />
@@ -18,7 +19,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="~/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
-    @Scripts.Render("~/bundles/jobminxApp")
+    
 </head>
 <body>
     <!--  wrapper -->
@@ -160,13 +161,14 @@
         <!--  page-wrapper -->
         <div id="page-wrapper" style="background-image:url(/images/business-minded.jpg); background-position:center; background-size:cover; position: relative;">  
             @RenderBody()
+            @RenderSection("scripts", required: false)
         </div>
         <!-- end page-wrapper -->
 
     </div>
     <!-- end wrapper -->
     
-  
+  @Scripts.Render("~/bundles/jobminxApp")
 
 </body>
 

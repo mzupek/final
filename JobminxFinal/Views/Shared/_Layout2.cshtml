@@ -5,12 +5,10 @@
     <title>Jobminx</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <link href="~/Content/Site.css" rel="stylesheet" />
-        <link href="~/Content/styles.css" rel="stylesheet" />
-        <script src="~/Scripts/modernizr-2.6.2.js"></script>
-        <script src="~/Scripts/respond.js"></script>
-   
+    @Styles.Render("~/Content/css")
+    <link href="~/Content/styles.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+
 
  
 </head>
@@ -18,8 +16,7 @@
   
     <div class="container body-content">
         @RenderBody()
-     
-       
+        @RenderSection("scripts", required: false)
         <footer class="text-center">
             <p>&copy; @DateTime.Now.Year - Jobminx.com</p>
         </footer>
