@@ -372,6 +372,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\Controllers\LandingPageController.js" />
+    <Content Include="Scripts\Controllers\LoginController.js" />
+    <Content Include="Scripts\Controllers\RegisterController.js" />
+    <Content Include="Scripts\Directives\UploadButton.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-touch.min.js.map" />
@@ -386,6 +390,10 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Factories\AuthHttpResponseInterceptor.js" />
+    <Content Include="Scripts\Factories\LoginFactory.js" />
+    <Content Include="Scripts\Factories\RegistrationFactory.js" />
+    <Content Include="Scripts\filters\filter.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-et.js" />
@@ -1140,6 +1148,15 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\ngStorage.js" />
     <Content Include="Scripts\ngStorage.min.js" />
+    <Content Include="Scripts\rangy\rangy-core.js" />
+    <Content Include="Scripts\rangy\rangy-cssclassapplier.js" />
+    <Content Include="Scripts\rangy\rangy-selectionsaverestore.js" />
+    <Content Include="Scripts\rangy\rangy-serializer.js" />
+    <Content Include="Scripts\rangy\rangy-textrange.js" />
+    <Content Include="Scripts\rangy\uncompressed\rangy-core.js" />
+    <Content Include="Scripts\rangy\uncompressed\rangy-cssclassapplier.js" />
+    <Content Include="Scripts\rangy\uncompressed\rangy-selectionsaverestore.js" />
+    <Content Include="Scripts\rangy\uncompressed\rangy-serializer.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\sammy-0.7.4.js" />
@@ -1197,11 +1214,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="assets\" />
-    <Folder Include="Scripts\Controllers\" />
-    <Folder Include="Scripts\Directives\" />
-    <Folder Include="Scripts\Factories\" />
-    <Folder Include="Scripts\filters\" />
-    <Folder Include="Scripts\rangy\" />
     <Folder Include="Views\Indeed\" />
   </ItemGroup>
   <ItemGroup>
