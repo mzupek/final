@@ -393,7 +393,7 @@ var OptimizeController = function ($scope, $http, $localStorage, $sessionStorage
     $scope.currentJobUrl = $localStorage.CurrentJobUrl;
     $scope.resumeText = $localStorage.resumeText;
     $scope.html = $sce.trustAsHtml($scope.resumeText);
-
+    console.log("html:" + $scope.html);
     $scope.resumeKeys = $localStorage.CurrentResumeKeyowrds;
     $scope.jobKeys = $localStorage.CurrentJobKeywords;
     $scope.Keep = _.intersection($scope.jobKeys, $scope.resumeKeys);
@@ -412,6 +412,7 @@ var OptimizeController = function ($scope, $http, $localStorage, $sessionStorage
     $scope.track = function ($scope) {
 
         $scope.resumeText = $filter('highlight')($scope.resumeText, $scope.Keep, $scope.Missing, $scope.Score);
+       
         $scope.final = $scope.Keep.length + $scope.Missing.length;
         $scope.Score = Math.ceil($scope.Keep.length / $scope.final * 100);
         $scope.range = rangy.saveSelection();
