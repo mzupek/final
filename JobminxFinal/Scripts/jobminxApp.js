@@ -17,7 +17,7 @@ jobminxApp.controller('PasteModalInstanceController', PasteModalInstanceControll
 
 var configFunction = function ($routeProvider, $httpProvider, $locationProvider) {
 
-   // $locationProvider.hashPrefix('!').html5Mode(true);
+   //$locationProvider.hashPrefix('!').html5Mode(true);
     //$locationProvider.html5Mode({
     //    enabled: true,
     //    requireBase: false,
