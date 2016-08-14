@@ -157,6 +157,7 @@ var DriveController = function ($scope, $http, $localStorage, $sessionStorage, $
                             'params': { 'maxResults': '1000' },
                             callback: function (responsejs, responsetxt) {
                                     var fileDownloadUrl = responsejs.downloadUrl; //using this downloadUrl you will be able to download Drive File Successfully
+                                    console.log(fileDownloadUrl);
                             }
                         });
                     }   
@@ -164,11 +165,12 @@ var DriveController = function ($scope, $http, $localStorage, $sessionStorage, $
                   // A simple callback implementation.
                   function pickerCallback(data) {
                     var url = 'nothing';
+                    var durl = 'nothing';
                     if (data[google.picker.Response.ACTION] == google.picker.Action.PICKED) {
                       var doc = data[google.picker.Response.DOCUMENTS][0];
                       url = doc[google.picker.Document.URL];
                       var fileId = data.docs[0].id;
-                      var durl = getDownloadurl(fileId); 
+                      durl = getDownloadurl(fileId); 
                     }
                     var message = 'You picked: ' + url;
                     document.getElementById('result').innerHTML = message;
