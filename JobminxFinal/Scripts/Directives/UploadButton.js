@@ -103,7 +103,7 @@ var DriveController = function ($scope, $http, $localStorage, $sessionStorage, $
                   var clientId = "712634662186-5ktbr27ihjqkqokhfj8dns15vk71n2t0.apps.googleusercontent.com"
 
                   // Scope to use to access user's photos.
-                  var scope = ['https://www.googleapis.com/auth/DOCS'];
+                  var scope = ['https://www.googleapis.com/auth'];
 
                   var pickerApiLoaded = false;
                   var oauthToken;
