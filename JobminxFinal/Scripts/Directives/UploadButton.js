@@ -103,7 +103,7 @@ var DriveController = function ($scope, $http, $localStorage, $sessionStorage, $
                   var clientId = "712634662186-5ktbr27ihjqkqokhfj8dns15vk71n2t0.apps.googleusercontent.com"
 
                   // Scope to use to access user's photos.
-                  var scope = ['https://www.googleapis.com/auth/photos'];
+                  var scope = ['https://www.googleapis.com/auth/DOCS'];
 
                   var pickerApiLoaded = false;
                   var oauthToken;
@@ -140,7 +140,7 @@ var DriveController = function ($scope, $http, $localStorage, $sessionStorage, $
                   function createPicker() {
                     if (pickerApiLoaded && oauthToken) {
                       var picker = new google.picker.PickerBuilder().
-                          addView(google.picker.ViewId.PHOTOS).
+                          addView(google.picker.ViewId.DOCS).
                           setOAuthToken(oauthToken).
                           setDeveloperKey(developerKey).
                           setCallback(pickerCallback).
