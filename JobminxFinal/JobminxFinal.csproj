@@ -334,6 +334,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\AIM.png" />
     <Content Include="images\android-desktop.png" />
     <Content Include="images\business-minded.jpg" />
     <Content Include="images\desk-notebook-office-macbook.jpg" />
@@ -342,6 +343,7 @@
     <Content Include="images\favicon.png" />
     <Content Include="images\ios-desktop.png" />
     <Content Include="images\jobminx_logo_flatgreen.png" />
+    <Content Include="images\jobTarget.png" />
     <Content Include="images\People-walking-blur-low-res.jpg" />
     <Content Include="images\recentjobs.png" />
     <Content Include="images\recentresumes.png" />

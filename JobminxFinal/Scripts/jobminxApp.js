@@ -11,6 +11,7 @@ jobminxApp.controller('DropboxController', DropboxController);
 jobminxApp.controller('jobModalInstanceController', jobModalInstanceController);
 jobminxApp.controller('ModalInstanceCtrl', ModalInstanceCtrl); 
 jobminxApp.controller('PasteModalInstanceController', PasteModalInstanceController);
+jobminxApp.controller('DriveController', DriveController);
 //jobminxApp.factory('AuthHttpResponseInterceptor', AuthHttpResponseInterceptor);
 //jobminxApp.factory('LoginFactory', LoginFactory);
 //jobminxApp.factory('RegistrationFactory', RegistrationFactory);
