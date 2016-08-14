@@ -97,7 +97,7 @@ var DriveController = function ($scope, $http, $localStorage, $sessionStorage, $
 
         
                    // The Browser API key obtained from the Google Developers Console.
-                  var developerKey = 'AIzaSyBOc0I3KHB3wHfHDHJD85wdp6Zx7xdiB4g';
+                  var developerKey = 'QCmUlfhBGVbid2AxqT8uJ79E';
 
                   // The Client ID obtained from the Google Developers Console. Replace with your own Client ID.
                   var clientId = "712634662186-5ktbr27ihjqkqokhfj8dns15vk71n2t0.apps.googleusercontent.com"
