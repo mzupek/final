@@ -158,6 +158,71 @@ var DriveController = function ($scope, $http, $localStorage, $sessionStorage, $
                     }
                     var message = 'You picked: ' + url;
                     document.getElementById('result').innerHTML = message;
+
+                      data =
+                             {
+                                 url: url,
+                                 
+                             };
+                      
+                      
+                      $http.post('/Api/Parse/UploadFromDropBox', data, {
+        
+                        headers: { 'Content-Type': "application/json" }
+                    })
+                            .success(function (data, status, headers, config) {
+
+
+                                $scope.resume = {};
+                                $scope.resume = data.resume;
+                                
+                                data =
+                                     {
+                                         resumeText: $scope.resume
+
+                                     };
+
+
+                                      $http.post('/Api/Parse/TextResumeParse', data, {
+        
+                                        headers: { 'Content-Type': "application/json" }
+                                    })
+                                    
+                                    .success(function (data, status, headers, config) {
+                                            
+                                                $scope.successMessage = "Your Request Was Successfully Created?";
+                                                $scope.showErrorMessage = false;
+                                                $scope.showSuccessMessage = true;
+                                                $scope.info = JSON.parse(data.results);
+                                                $scope.zip = data.zipcode;
+               
+                                                console.log("All Data From Resume:" + data.results);
+                                                //console.log(data.zipcode);
+                                                //console.log($scope.info.Keywords);
+                                                //console.log($scope.info.Concepts);
+                                                //console.log($scope.info.Skills);
+                                                //console.log($scope.info.JobTitle);
+                    
+                                                $localStorage.query = $scope.info.JobTitle;
+                                                $localStorage.loc = $scope.zip;
+                                                $localStorage.resumeText = $scope.info.Text;
+
+                                                function onlyUnique(value, index, self) {
+                                                    return self.indexOf(value) === index;
+                                                }
+
+                      
+           
+                                                var unique = $scope.info.Competencies.filter(onlyUnique);
+
+                                                $localStorage.CurrentResumeKeyowrds = unique;
+                                                mixpanel.track("UploadedResume");
+                                                $location.path('/One');
+                                     
+                                     });
+
+                            });
+
                   }
 
                   onApiLoad();
