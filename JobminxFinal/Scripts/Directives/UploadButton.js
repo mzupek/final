@@ -108,6 +108,8 @@ var DriveController = function ($scope, $http, $localStorage, $sessionStorage, $
                   var pickerApiLoaded = false;
                   var oauthToken;
 
+                   onApiLoad();
+                  
                   // Use the API Loader script to load google.picker and gapi.auth.
                   function onApiLoad() {
                     gapi.load('auth', {'callback': onAuthApiLoad});
@@ -241,7 +243,7 @@ var DriveController = function ($scope, $http, $localStorage, $sessionStorage, $
 
                   }
 
-                  onApiLoad();
+                 
        
 }
 }
