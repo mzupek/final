@@ -100,7 +100,7 @@ var DriveController = function ($scope, $http, $localStorage, $sessionStorage, $
                   var developerKey = 'AIzaSyBOc0I3KHB3wHfHDHJD85wdp6Zx7xdiB4g';
 
                   // The Client ID obtained from the Google Developers Console. Replace with your own Client ID.
-                  var clientId = "1234567890-abcdefghijklmnopqrstuvwxyz.apps.googleusercontent.com"
+                  var clientId = "712634662186-5ktbr27ihjqkqokhfj8dns15vk71n2t0.apps.googleusercontent.com"
 
                   // Scope to use to access user's photos.
                   var scope = ['https://www.googleapis.com/auth/photos'];
