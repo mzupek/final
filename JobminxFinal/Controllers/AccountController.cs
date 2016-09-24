@@ -166,74 +166,11 @@ namespace JobminxFinal.Controllers
             {
 
 
-                var planService = new StripePlanService("sk_live_PrZPD9yrQ7INvLkw6stlykLN");
-
-                var myCustomer = new StripeCustomerCreateOptions();
-                myCustomer.Email = "pork@email.com";
-                myCustomer.Description = "Johnny Tenderloin (pork@email.com)";
-
-                // setting up the card
-                myCustomer.SourceCard = new SourceCard()
-                {
-                    Number = model.Number,
-                    ExpirationYear = model.ExpirationYear,
-                    ExpirationMonth = model.ExpirationYear,
-                    //AddressCountry = "US",                // optional
-                    //AddressLine1 = "24 Beef Flank St",    // optional
-                    //AddressLine2 = "Apt 24",              // optional
-                    //AddressCity = "Biggie Smalls",        // optional
-                    //AddressState = "NC",                  // optional
-                    //AddressZip = "27617",                 // optional
-                    Name = model.Name,               // optional
-                    Cvc = model.Cvc                          // optional
-                };
-
                 
 
 
 
-                var customerService = new StripeCustomerService();
-                StripeCustomer stripeCustomer = customerService.Create(myCustomer);
-
-                // setting up the card
-                var myCharge = new StripeChargeCreateOptions();
-
-
-                myCharge.SourceCard = new SourceCard()
-                {
-                    Number = model.Number,
-                    ExpirationYear = model.ExpirationYear,
-                    ExpirationMonth = model.ExpirationYear,
-                    //AddressCountry = "US",                // optional
-                    //AddressLine1 = "24 Beef Flank St",    // optional
-                    //AddressLine2 = "Apt 24",              // optional
-                    //AddressCity = "Biggie Smalls",        // optional
-                    //AddressState = "NC",                  // optional
-                    //AddressZip = "27617",                 // optional
-                    Name = model.Name,               // optional
-                    Cvc = model.Cvc                          // optional
-                };
-
-                // always set these properties
-                myCharge.Amount = 1000;
-                myCharge.Currency = "usd";
-
-                // set this if you want to
-                myCharge.Description = "All you can use for 10.00";
-
                
-
-                // set this property if using a customer
-                myCharge.CustomerId = stripeCustomer.Id;
-
-                // set this if you have your own application fees (you must have your application configured first within Stripe)
-                //myCharge.ApplicationFee = 25;
-
-                // (not required) set this to false if you don't want to capture the charge yet - requires you call capture later
-                myCharge.Capture = true;
-
-                var chargeService = new StripeChargeService();
-                StripeCharge stripeCharge = chargeService.Create(myCharge);
 
 
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Hometown = model.Hometown };
@@ -241,6 +178,45 @@ namespace JobminxFinal.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                    var planService = new StripePlanService("sk_live_PrZPD9yrQ7INvLkw6stlykLN");
+
+                    //var myCustomer = new StripeCustomerCreateOptions();
+                    //myCustomer.Email = model.Email;
+                    //myCustomer.Description = model.Email +"-"+ model.Name;
+
+                    //var customerService = new StripeCustomerService();
+                    //StripeCustomer stripeCustomer = customerService.Create(myCustomer, new StripeRequestOptions() { ApiKey = "sk_test_nNuKn8PwrOl6m6wpRwhLTdt9" });
+
+                    // setting up the card
+                    var myCharge = new StripeChargeCreateOptions();
+
+                    // always set these properties
+                    myCharge.Amount = 1000;
+                    myCharge.Currency = "usd";
+
+                    // set this if you want to
+                    myCharge.Description = "Charge it like it's hot";
+
+                    myCharge.SourceCard = new SourceCard()
+                    {
+                        Number = model.Number,
+                        ExpirationYear = model.ExpirationYear,
+                        ExpirationMonth = model.ExpirationMonth,
+                        Name = model.Name,
+                        Cvc = model.Cvc
+                    };
+
+                    myCharge.ReceiptEmail = model.Email;
+
+                    // set this property if using a customer
+                    //myCharge.CustomerId = stripeCustomer.Id;
+
+                    // (not required) set this to false if you don't want to capture the charge yet - requires you call capture later
+                    myCharge.Capture = true;
+
+                    var chargeService = new StripeChargeService();
+                    StripeCharge stripeCharge = chargeService.Create(myCharge, new StripeRequestOptions() { ApiKey = "sk_test_nNuKn8PwrOl6m6wpRwhLTdt9" });
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
