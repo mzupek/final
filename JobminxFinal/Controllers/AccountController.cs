@@ -196,7 +196,7 @@ namespace JobminxFinal.Controllers
                     myCharge.Currency = "usd";
 
                     // set this if you want to
-                    myCharge.Description = "Charge it like it's hot";
+                    myCharge.Description = "10 Dollar Unlimited Plan";
 
                     myCharge.SourceCard = new SourceCard()
                     {
