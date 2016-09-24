@@ -216,7 +216,7 @@ namespace JobminxFinal.Controllers
                     myCharge.Capture = true;
 
                     var chargeService = new StripeChargeService();
-                    StripeCharge stripeCharge = chargeService.Create(myCharge, new StripeRequestOptions() { ApiKey = "sk_test_nNuKn8PwrOl6m6wpRwhLTdt9" });
+                    StripeCharge stripeCharge = chargeService.Create(myCharge, new StripeRequestOptions() { ApiKey = "sk_live_PrZPD9yrQ7INvLkw6stlykLN" });
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
