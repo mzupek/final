@@ -561,12 +561,12 @@ var OptimizeController = function ($scope, $http, $localStorage, $sessionStorage
     $scope.Score = Math.ceil($scope.Keep.length / $scope.jobKeys.length * 100);
     //$scope.resumeText = $filter('highlight')($scope.resumeText, $scope.Keep, $scope.Missing, $scope.Score);
 
+    $scope.currentJobTitle = $localStorage.CurrentJobTitle;
+    $scope.currentJobDesc = $localStorage.CurrentJobDesc;
+
     $scope.JobTitle = $localStorage.JobTitle;
     $scope.Location = $localStorage.Location;
     $scope.Company = $localStorage.Company;
-
-    $scope.currentJobTitle = $localStorage.CurrentJobTitle;
-    $scope.currentJobDesc = $localStorage.CurrentJobDesc;
 
     $scope.track = function ($scope) {
 
@@ -574,9 +574,9 @@ var OptimizeController = function ($scope, $http, $localStorage, $sessionStorage
        
         $scope.final = $scope.Keep.length + $scope.Missing.length;
         $scope.Score = Math.ceil($scope.Keep.length / $scope.final * 100);
-        $scope.range = rangy.saveSelection();
-        rangy.restoreSelection($scope.range);
-        mixpanel.track("Rescore");
+        //$scope.range = rangy.saveSelection();
+        //rangy.restoreSelection($scope.range);
+        //mixpanel.track("Rescore");
 
 
     };
