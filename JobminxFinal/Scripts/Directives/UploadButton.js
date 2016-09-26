@@ -1,28 +1,28 @@
 ﻿/*globals angular:true*/
-var buttonApp = angular.module('buttonApp', ['ngStorage', 'ngResource'])
+var buttonApp = angular.module('buttonApp', ['ngStorage', 'ngResource', 'cgBusy'])
 
 
 
-buttonApp.directive("contenteditable", function () {
-    return {
-        restrict: "A",
-        require: "ngModel",
-        link: function (scope, element, attrs, ngModel) {
+//buttonApp.directive("contenteditable", function () {
+//    return {
+//        restrict: "A",
+//        require: "ngModel",
+//        link: function (scope, element, attrs, ngModel) {
 
-            function read() {
-                ngModel.$setViewValue(element.html());
-            }
+//            function read() {
+//                ngModel.$setViewValue(element.html());
+//            }
 
-            ngModel.$render = function () {
-                element.html(ngModel.$viewValue || "");
-            };
+//            ngModel.$render = function () {
+//                element.html(ngModel.$viewValue || "");
+//            };
 
-            element.bind("blur keyup change", function () {
-                scope.$apply(read);
-            });
-        }
-    };
-});
+//            element.bind("blur keyup change", function () {
+//                scope.$apply(read);
+//            });
+//        }
+//    };
+//});
 
 
 buttonApp.directive('fileChange', [
@@ -47,7 +47,7 @@ function MyCtrl($scope, $window, $location, $http, $localStorage, $sessionStorag
             //$scope.$apply();
             var fd = new FormData();
             fd.append('File', $scope.theFile);
-            $http.post('Api/Parse/PostResumeParse', fd,
+            $scope.myPromise = $http.post('Api/Parse/PostResumeParse', fd,
             {
                 transformRequest:angular.identity,
                 headers: { 'Content-Type': undefined}
@@ -184,7 +184,7 @@ var DriveController = function ($scope, $http, $localStorage, $sessionStorage, $
                              };
                       
                       
-                      $http.post('/Api/Parse/UploadFromDropBox', data, {
+                   $scope.myPromise = $http.post('/Api/Parse/UploadFromDropBox', data, {
         
                         headers: { 'Content-Type': "application/json" }
                     })
@@ -201,7 +201,7 @@ var DriveController = function ($scope, $http, $localStorage, $sessionStorage, $
                                      };
 
 
-                                      $http.post('/Api/Parse/TextResumeParse', data, {
+                                   $scope.myPromise = $http.post('/Api/Parse/TextResumeParse', data, {
         
                                         headers: { 'Content-Type': "application/json" }
                                     })
@@ -266,7 +266,7 @@ var DropboxController = function ($scope, $http, $localStorage, $sessionStorage,
                              };
 
    
-                    $http.post('/Api/Parse/UploadFromDropBox', data, {
+                    $scope.myPromise = $http.post('/Api/Parse/UploadFromDropBox', data, {
         
                         headers: { 'Content-Type': "application/json" }
                     })
@@ -283,7 +283,7 @@ var DropboxController = function ($scope, $http, $localStorage, $sessionStorage,
                                      };
 
 
-                                      $http.post('/Api/Parse/TextResumeParse', data, {
+                                      $scope.myPromise = $http.post('/Api/Parse/TextResumeParse', data, {
         
                                         headers: { 'Content-Type': "application/json" }
                                     })
@@ -364,7 +364,7 @@ var SearchResultController = function ($scope, $http, $localStorage, $sessionSto
              };
 
    
-    $http.post('/Indeed/SearchIndeed', data, {
+    $scope.myPromise = $http.post('/Indeed/SearchIndeed', data, {
         
         headers: { 'Content-Type': "application/json" }
     })
@@ -396,7 +396,7 @@ var SearchResultController = function ($scope, $http, $localStorage, $sessionSto
                  };
 
 
-        $http.post('/Indeed/SearchIndeed', data, {
+        $scope.myPromise = $http.post('/Indeed/SearchIndeed', data, {
 
             headers: { 'Content-Type': "application/json" }
         })
@@ -434,7 +434,7 @@ var JobParseController = function ($scope, $http, $localStorage, $sessionStorage
                  url: $scope.job.url
                  
              };
-        $http.post('/Indeed/GetJobFromIndeed', data, {
+        $scope.myPromise = $http.post('/Indeed/GetJobFromIndeed', data, {
 
             headers: { 'Content-Type': "application/json" }
         })
@@ -454,7 +454,7 @@ var JobParseController = function ($scope, $http, $localStorage, $sessionStorage
                     jobtext: data.jobdesc
 
                 };
-                $http.post('Api/Parse/PostJobParse', JSON.stringify(jobdata), {
+                $scope.myPromise = $http.post('Api/Parse/PostJobParse', JSON.stringify(jobdata), {
 
                     headers: { 'Content-Type': "application/json" }
                 })
@@ -497,7 +497,7 @@ var JobParseController = function ($scope, $http, $localStorage, $sessionStorage
                  url: $scope.job.url
                  
              };
-        $http.post('/Indeed/GetJobFromIndeed', data, {
+        $scope.myPromise = $http.post('/Indeed/GetJobFromIndeed', data, {
 
             headers: { 'Content-Type': "application/json" }
         })
@@ -570,14 +570,16 @@ var OptimizeController = function ($scope, $http, $localStorage, $sessionStorage
 
     $scope.track = function ($scope) {
 
+        $scope.range = rangy.saveSelection();
         $scope.resumeText = $filter('highlight')($scope.resumeText, $scope.Keep, $scope.Missing, $scope.Score);
        
         $scope.final = $scope.Keep.length + $scope.Missing.length;
         $scope.Score = Math.ceil($scope.Keep.length / $scope.final * 100);
-        //$scope.range = rangy.saveSelection();
-        //rangy.restoreSelection($scope.range);
-        //mixpanel.track("Rescore");
-
+        
+        rangy.restoreSelection($scope.range);
+        rangy.removeMarkers($scope.range);
+        mixpanel.track("Rescore");
+      
 
     };
 
@@ -678,7 +680,7 @@ var PasteModalInstanceController = function ($scope, $modalInstance, $http, $loc
                    jobtext: jd
 
                };
-        $http.post('Api/Parse/PostJobParse', JSON.stringify(jobdata), {
+        $scope.myPromise = $http.post('Api/Parse/PostJobParse', JSON.stringify(jobdata), {
 
             headers: { 'Content-Type': "application/json" }
         })

@@ -378,6 +378,10 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\angularBusy\angular-busy.css" />
+    <Content Include="Scripts\angularBusy\angular-busy.js" />
+    <Content Include="Scripts\angularBusy\angular-busy.min.css" />
+    <Content Include="Scripts\angularBusy\angular-busy.min.js" />
     <Content Include="Scripts\App\One.html" />
     <Content Include="Scripts\App\Start.html" />
     <Content Include="Scripts\App\Two.html" />
@@ -409,6 +413,7 @@
     <Content Include="Scripts\Controllers\LandingPageController.js" />
     <Content Include="Scripts\Controllers\LoginController.js" />
     <Content Include="Scripts\Controllers\RegisterController.js" />
+    <Content Include="Scripts\Directives\contenteditable.js" />
     <Content Include="Scripts\Directives\UploadButton.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular.min.js.map" />
@@ -1206,6 +1211,14 @@
     <Content Include="Scripts\textAngular-sanitize.min.js" />
     <Content Include="Scripts\textAngular.css" />
     <Content Include="Scripts\textAngular.min.js" />
+    <Content Include="Scripts\textAngular\textAngular-rangy.min.js" />
+    <Content Include="Scripts\textAngular\textAngular-sanitize.js" />
+    <Content Include="Scripts\textAngular\textAngular-sanitize.min.js" />
+    <Content Include="Scripts\textAngular\textAngular.css" />
+    <Content Include="Scripts\textAngular\textAngular.js" />
+    <Content Include="Scripts\textAngular\textAngular.min.js" />
+    <Content Include="Scripts\textAngular\textAngular.umd.js" />
+    <Content Include="Scripts\textAngular\textAngularSetup.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-0.12.1.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\_ViewStart.cshtml" />

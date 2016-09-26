@@ -8,7 +8,7 @@
 
         <br />
         <div ng-controller="MyCtrl">
-
+           
             <p class="lead">
                 <label for="file-upload" class="btn btn-lg btn-success btn-lg">
                     <span class="fa fa-cloud-upload fa-fw"></span>  Upload Resume
@@ -21,11 +21,13 @@
             <div ng-repeat="keyword in Keywords">
                 <p>{{keyword}}</p>
             </div>
-
+            <div cg-busy="myPromise"></div>
         </div>
        
         <div ng-controller="DropboxController">
+            
             <p class="lead"><button ng-click="dropbox()" class="btn btn-lg btn-success btn-lg"><i class="fa fa-dropbox" aria-hidden="true"></i> From DropBox</button></p>
+            <div cg-busy="myPromise"></div>
         </div>
 
     <!--<div ng-controller="DriveController">

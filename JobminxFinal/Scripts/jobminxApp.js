@@ -1,4 +1,4 @@
-﻿var jobminxApp = angular.module('jobminxApp', ['ngRoute', 'ngAnimate', 'buttonApp', 'ngStorage', 'ngResource', 'ngSanitize', 'searchApp', 'ui.bootstrap', 'angular-progress-arc']);
+﻿var jobminxApp = angular.module('jobminxApp', ['ngRoute', 'ngAnimate', 'buttonApp', 'ngStorage', 'ngResource', 'ngSanitize', 'searchApp', 'ui.bootstrap', 'angular-progress-arc', 'textAngular', 'cgBusy']);
 
 jobminxApp.controller('LandingPageController', LandingPageController);
 jobminxApp.controller('LoginController', LoginController);

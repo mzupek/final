@@ -46,12 +46,14 @@
        
 
         <div ng-controller="JobParseController">
+            <div cg-busy="myPromise"></div>
             <div class="col-lg-8 col-lg-offset-2" style="background-color:black; opacity:0.7; padding:20px;">
                 <div class="panel-heading" style="height:auto;">
                     <a href="#" class="btn btn-success" ng-click="paste()" style="color:white;"><i class="fa fa-paste"></i> Paste In Job</a>
                 </div>
                 <div style="color:white; overflow-y:scroll; height:400px;">
                     <div class="panel-body">
+                        
                         <div style="text-align:center;" ng-show="jobs == ''"><h3>Can you help us out, our search for a job didn't return any results, add to the search above to retry.</h3></div>
                         <div ng-repeat-start="job in jobs track by $index">
                             
@@ -63,6 +65,7 @@
                             Date Posted: {{job.date}}  <br/>
                             <div class="pull-right">
                                 <button class="btn btn-success" ng-click="parse(this)" data="{{job.url}}">See how you match up</button> | <button class="btn btn-success" ng-click="open(this)" data="{{job.url}}">View full Job</button>
+                                <div cg-busy="myPromise"></div>
                             </div>
                            
 

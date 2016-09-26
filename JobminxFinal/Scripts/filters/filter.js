@@ -71,7 +71,7 @@ searchApp.filter('highlight', function ($sce, $localStorage, $sessionStorage, $w
             var _savedSelection = $window.rangy.saveSelection();
             $window.rangy.restoreSelection(_savedSelection);
             var regex = new RegExp('(' + termsToHighlight.join('|') + ')', 'ig');
-            return $sce.trustAsHtml(str.replace(regex, '<i class="match" contenteditable="false">$&</i>'));
+            return $sce.trustAsHtml(str.replace(regex, '<span class="match" contenteditable="false">$&</span>'));
         }
         
         
